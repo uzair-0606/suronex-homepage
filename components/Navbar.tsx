@@ -37,7 +37,7 @@ export default function Navbar() {
           hover:opacity-90
           transition
         ">
-          Book a Demo
+          login
         </button>
       </div>
     </nav>

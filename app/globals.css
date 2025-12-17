@@ -1,10 +1,83 @@
 @import "tailwindcss";
 
+/* =========================================================
+   BASE RESET & LAYOUT
+========================================================= */
+
 html,
 body {
   min-height: 100%;
 }
 
 body {
+  background-color: #09090b; /* zinc-950 */
+  color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================================
+   SMOOTH UX
+========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Text selection */
+::selection {
+  background: rgba(147, 51, 234, 0.35); /* purple */
+  color: white;
+}
+
+/* Prevent image dragging (clean feel) */
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* =========================================================
+   TRUSTED BY / LOGO MARQUEE
+========================================================= */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* =========================================================
+   SCROLLBAR (OPTIONAL – PREMIUM LOOK)
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
 }

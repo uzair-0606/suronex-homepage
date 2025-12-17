@@ -1,104 +1,104 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
-import SplineBackground from "@/components/SplineBackground";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const features = [
   {
-    title: "AI Risk Detection",
-    desc: "Automatically identify security threats using intelligent AI models.",
+    title: "AI-Driven Risk Detection",
+    desc: "Suronex continuously scans your infrastructure to identify security risks and compliance gaps using advanced AI models.",
+    image: "/features/feature-1.jpg",
   },
   {
-    title: "Compliance Automation",
-    desc: "Continuously meet regulatory standards without manual effort.",
+    title: "Real-Time Monitoring",
+    desc: "Monitor configurations, access patterns, and system behavior in real time without manual intervention.",
+    image: "/features/feature-2.jpg",
   },
   {
-    title: "Real-Time Alerts",
-    desc: "Instant notifications the moment risks or violations appear.",
-  },
-  {
-    title: "Enterprise-Grade Security",
-    desc: "Built to scale with modern enterprise infrastructure.",
+    title: "Compliance-Ready Reports",
+    desc: "Generate audit-ready reports instantly for ISO, SOC 2, GDPR, and other compliance frameworks.",
+    image: "/features/feature-3.jpg",
   },
 ];
 
 export default function Features() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState(false);
-
-  /* Scroll-based parallax for 3D */
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const bgY = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.25, 1.1, 1]);
-  const bgOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    hovered ? [0.35, 0.25, 0.15] : [0.25, 0.18, 0.1]
-  );
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative px-8 py-32 overflow-hidden"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* 3D BACKGROUND — LIMITED TO THIS SECTION ONLY */}
-      <motion.div
-        style={{ y: bgY, scale: bgScale, opacity: bgOpacity }}
-        className="absolute inset-0 z-0 pointer-events-none"
-      >
-        <SplineBackground />
-      </motion.div>
+    <section className="px-8 py-40">
+      <div className="mx-auto max-w-7xl">
 
-      {/* CONTENT */}
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <h2 className="mb-16 text-center text-3xl md:text-4xl font-bold text-white">
-          Key Features
-        </h2>
+        {/* Section Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="mb-32 text-center text-3xl md:text-4xl font-bold text-white"
+        >
+          Built for Modern Security Teams
+        </motion.h2>
 
-        <div className="grid gap-8 md:grid-cols-4">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.12,
-                ease: "easeOut",
-              }}
-              whileHover={{
-                y: -10,
-                boxShadow:
-                  "0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(147,51,234,0.35)",
-              }}
-              className="
-                cursor-pointer
-                rounded-2xl
-                bg-zinc-900/80
-                backdrop-blur
-                p-6
-                border border-white/10
-                shadow-[0_20px_40px_rgba(0,0,0,0.45)]
-              "
-            >
-              <h3 className="mb-3 text-lg font-semibold text-purple-400">
-                {feature.title}
-              </h3>
+        {/* Feature Rows */}
+        <div className="space-y-40">
+          {features.map((feature, index) => {
+            const reverse = index % 2 !== 0;
 
-              <p className="text-sm leading-relaxed text-zinc-400">
-                {feature.desc}
-              </p>
-            </motion.div>
-          ))}
+            // 👇 Extra spacing ONLY for feature 1 & 3
+            const extraGap =
+              index === 0 || index === 2 ? "md:gap-32" : "md:gap-24";
+
+            return (
+              <div
+                key={index}
+                className={`grid items-center gap-24 ${extraGap} md:grid-cols-2`}
+              >
+                {/* Image */}
+                <motion.div
+                  initial={{ opacity: 0, x: reverse ? 60 : -60 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className={`
+                    relative rounded-3xl
+                    border border-white/10
+                    bg-zinc-900/80
+                    shadow-[0_30px_60px_rgba(0,0,0,0.5)]
+                    p-5 md:p-6
+                    ${reverse ? "md:order-2" : ""}
+                  `}
+                >
+                  <div className="relative overflow-hidden rounded-2xl">
+                    <Image
+                      src={feature.image}
+                      alt={feature.title}
+                      width={720}
+                      height={460}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+                  </div>
+                </motion.div>
+
+                {/* Text */}
+                <motion.div
+                  initial={{ opacity: 0, x: reverse ? -60 : 60 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className={`${reverse ? "md:order-1" : ""}`}
+                >
+                  <h3 className="text-2xl md:text-3xl font-semibold text-purple-400">
+                    {feature.title}
+                  </h3>
+
+                  <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-400">
+                    {feature.desc}
+                  </p>
+                </motion.div>
+              </div>
+            );
+          })}
         </div>
+
       </div>
     </section>
   );
