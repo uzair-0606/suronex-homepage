@@ -3,11 +3,11 @@
 import Image from "next/image";
 
 const logos = [
-  "/partners/aws.jpg",
-  "/partners/google.jpg",
-  "/partners/microsoft.jpg",
-  "/partners/ibm.jpg",
-  "/partners/oracle.jpg",
+  "/partner/aws.jpg",
+  "/partner/google.jpg",
+  "/partner/microsoft.jpg",
+  "/partner/ibm.jpg",
+  "/partner/oracle.jpg",
 ];
 
 export default function TrustedBy() {
