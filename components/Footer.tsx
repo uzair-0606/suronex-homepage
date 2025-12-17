@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Logo + socials */}
           <div>
             <Image
-              src="/logo.png"
+              src="/Logo.png"
               alt="Suronex Logo"
               width={150}
               height={40}
