@@ -10,10 +10,9 @@ export default function HeroIntro({ onComplete }: { onComplete: () => void }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onAnimationComplete={() => {
-        setTimeout(onComplete, 1800);
+        setTimeout(onComplete, 1800); // controlled delay before hero loads
       }}
     >
-      {/* LOGO */}
       <motion.img
         src="/logo.png"
         alt="Suronex"
@@ -23,7 +22,6 @@ export default function HeroIntro({ onComplete }: { onComplete: () => void }) {
         transition={{ duration: 0.6, ease: "easeOut" }}
       />
 
-      {/* ABSTRACT 3D ILLUSION */}
       <motion.div
         className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-500 to-purple-400 blur-3xl opacity-60"
         initial={{ scale: 0.6, opacity: 0 }}

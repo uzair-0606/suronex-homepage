@@ -26,32 +26,27 @@ export default function Features() {
     <section className="px-8 py-40">
       <div className="mx-auto max-w-7xl">
 
-        {/* Section Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true }} // animate only once on scroll
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="mb-32 text-center text-3xl md:text-4xl font-bold text-white"
         >
           Built for Modern Security Teams
         </motion.h2>
 
-        {/* Feature Rows */}
         <div className="space-y-40">
           {features.map((feature, index) => {
-            const reverse = index % 2 !== 0;
-
-            // 👇 Extra spacing ONLY for feature 1 & 3
+            const reverse = index % 2 !== 0; // alternate layout
             const extraGap =
-              index === 0 || index === 2 ? "md:gap-32" : "md:gap-24";
+              index === 0 || index === 2 ? "md:gap-32" : "md:gap-24"; // more space for 1st & 3rd
 
             return (
               <div
                 key={index}
                 className={`grid items-center gap-24 ${extraGap} md:grid-cols-2`}
               >
-                {/* Image */}
                 <motion.div
                   initial={{ opacity: 0, x: reverse ? 60 : -60 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -74,11 +69,10 @@ export default function Features() {
                       height={460}
                       className="w-full h-full object-cover"
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" /> {/* soft overlay */}
                   </div>
                 </motion.div>
 
-                {/* Text */}
                 <motion.div
                   initial={{ opacity: 0, x: reverse ? -60 : 60 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -103,3 +97,4 @@ export default function Features() {
     </section>
   );
 }
+

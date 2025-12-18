@@ -17,15 +17,16 @@ export default function TrustedBy() {
         Trusted by teams at
       </p>
 
-      {/* Fade edges */}
+
+      
       <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-zinc-950 to-transparent z-10" />
       <div className="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-zinc-950 to-transparent z-10" />
 
-      {/* Marquee */}
+      
       <div className="overflow-hidden">
         <div className="flex animate-marquee gap-20 items-center">
 
-          {/* First set */}
+          
           {logos.map((logo, i) => (
             <div key={`first-${i}`} className="flex items-center">
               <Image

@@ -47,44 +47,32 @@ const steps = [
 ];
 
 export default function HowItWorks() {
-  const [hovered, setHovered] = useState<number | null>(null);
+  const [hovered, setHovered] = useState<number | null>(null); // track hovered card
 
   return (
     <section className="px-8 py-32 relative">
       <div className="mx-auto max-w-7xl">
 
-        {/* Title */}
         <h2 className="mb-20 text-center text-3xl md:text-4xl font-bold text-white">
           How It Works
         </h2>
 
         <div className="relative">
-
-          {/* Animated connecting line */}
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true }} // animate line once on scroll
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="
-              absolute
-              top-6
-              left-0
-              right-0
-              h-px
-              origin-left
-              bg-gradient-to-r
-              from-purple-500/20
-              via-purple-500/70
-              to-purple-500/20
+              absolute top-6 left-0 right-0 h-px origin-left
+              bg-gradient-to-r from-purple-500/20 via-purple-500/70 to-purple-500/20
               hidden md:block
             "
           />
 
-          {/* Steps */}
           <div className="grid gap-10 md:grid-cols-4">
             {steps.map((item, index) => {
-              const isActive = hovered === index;
+              const isActive = hovered === index; // hover state for glow
 
               return (
                 <motion.div
@@ -94,20 +82,15 @@ export default function HowItWorks() {
                   viewport={{ once: true }}
                   transition={{
                     duration: 0.7,
-                    delay: index * 0.15,
+                    delay: index * 0.15, // staggered entrance
                     ease: "easeOut",
                   }}
                   whileHover={{ y: -6 }}
                   onMouseEnter={() => setHovered(index)}
                   onMouseLeave={() => setHovered(null)}
                   className={`
-                    cursor-pointer
-                    rounded-2xl
-                    bg-zinc-900/80
-                    backdrop-blur
-                    p-6
-                    border
-                    shadow-[0_18px_36px_rgba(0,0,0,0.45)]
+                    cursor-pointer rounded-2xl bg-zinc-900/80 backdrop-blur
+                    p-6 border shadow-[0_18px_36px_rgba(0,0,0,0.45)]
                     transition-all duration-300
                     ${
                       isActive
@@ -116,16 +99,9 @@ export default function HowItWorks() {
                     }
                   `}
                 >
-                  {/* Icon */}
                   <div
                     className={`
-                      mb-4
-                      flex
-                      h-12
-                      w-12
-                      items-center
-                      justify-center
-                      rounded-full
+                      mb-4 flex h-12 w-12 items-center justify-center rounded-full
                       transition-all duration-300
                       ${
                         isActive
@@ -137,7 +113,6 @@ export default function HowItWorks() {
                     {item.icon}
                   </div>
 
-                  {/* Content */}
                   <h3 className="text-lg font-semibold text-purple-400">
                     {item.title}
                   </h3>

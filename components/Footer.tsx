@@ -7,10 +7,9 @@ export default function Footer() {
     <footer className="bg-zinc-950 text-zinc-400 border-t border-white/10">
       <div className="mx-auto max-w-7xl px-8 py-16">
 
-        {/* Top */}
         <div className="grid gap-12 md:grid-cols-4">
 
-          {/* Logo + socials */}
+          
           <div>
             <Image
               src="/Logo.png"
