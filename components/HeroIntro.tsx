@@ -14,7 +14,7 @@ export default function HeroIntro({ onComplete }: { onComplete: () => void }) {
       }}
     >
       <motion.img
-        src="/logo.png"
+        src="/Logo.png"
         alt="Suronex"
         className="h-20 mb-10"
         initial={{ opacity: 0, scale: 0.8 }}
